@@ -1,18 +1,19 @@
 <template>
   <div class="pitch">
     <h3 > {{ msg }} </h3>
-    <canvas id="canv" />
-    <img src="/static/chakras.jpeg" width="200" />
-    <button @click="start"> Play </button>
+    <h4> Score: {{ score.right }} / {{ score.right + score.wrong}}</h4>
+    <canvas id="canv" width="400" />
+    <img src="/static/chakras.jpeg" width="400" />
+    <ui-button @click="start"> Start </ui-button>
     <hr />
     <div>
-      <button @click="answer" id="C" > C </button>
-      <button @click="answer" id="D" > D </button>
-      <button @click="answer" id="E" > E </button>
-      <button @click="answer" id="F" > F </button>
-      <button @click="answer" id="G" > G </button>
-      <button @click="answer" id="A" > A </button>
-      <button @click="answer" id="B" > B </button>
+      <ui-button color="red" @click="answer" id="C" > C </ui-button>
+      <ui-button color="orange" @click="answer" id="D" > D </ui-button>
+      <ui-button @click="answer" id="E" > E </ui-button>
+      <ui-button color="green" @click="answer" id="F" > F </ui-button>
+      <ui-button color="primary" @click="answer" id="G" > G </ui-button>
+      <ui-button color="accent" @click="answer" id="A" > A </ui-button>
+      <ui-button  @click="answer" id="B" > B </ui-button>
 
     </div>
   </div>
@@ -28,11 +29,11 @@ import Key from './Key'
 // const { fetch } = actions
 
 export default {
-  name: 'pitch',
+  name: 'Pitch',
   components: { Key },
   data () {
     return {
-      msg: 'pitch',
+      msg: 'Learning pitch through color associations',
       synthesizer: null,
       canvas: null,
       timer: null,
@@ -56,7 +57,7 @@ export default {
     },
     color () {
       this.canvas.fillStyle = this.cmajcolors[this.note]
-      this.canvas.fillRect(0, 0, 150, 75)
+      this.canvas.fillRect(0, 0, 400, 600)
     },
     game () {
       this.canvas.fillStyle = '#FFFFFF'
@@ -80,7 +81,8 @@ export default {
     answer (e) {
       let d = new Date()
       console.log('time to answer ->', d.getTime() - this.timer)
-      if (this.cmajor[this.note].includes(e.target.id)) {
+      console.log('chose ->', e.target.parentElement.id)
+      if (this.cmajor[this.note].includes(e.target.parentElement.id)) {
         this.score.right += 1
       } else {
         this.score.wrong += 1
@@ -121,5 +123,12 @@ export default {
     margin-bottom: 2rem;
     border-radius: 5px;
   }
+}
+
+#E {
+  background: yellow;
+}
+#B {
+  background: #FF7AFE;
 }
 </style>

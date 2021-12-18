@@ -47,5 +47,5 @@ new Vue({
   },
   router,
   template: '<App/>',
-  components: { App, UiTab, UiTabs }
+  components: { App, UiTab, UiTabs, UiButton }
 })
