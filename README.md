@@ -1,6 +1,8 @@
 # Synaesthate Learning Platform
 
 > Sensory learning methods and practices
+## Demo
+https://djoq.github.io/synaesthete-learning/#/pitch-vue
 
 ## Build Setup
 
