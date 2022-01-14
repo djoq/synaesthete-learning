@@ -1,7 +1,7 @@
 <template>
   <div class="entry">
     <h3> {{ msg }} </h3>
-
+    <a href="/#/pitch-vue">Pitch Trainer</a>
   </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
   name: 'entry',
   data () {
     return {
-      msg: 'Your Page title'
+      msg: 'Module List'
     }
   }
 }

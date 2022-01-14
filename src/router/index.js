@@ -1,5 +1,5 @@
 import Entry from '@/components/Entry'
-import OverVue from '@/components/OverVue'
+// import OverVue from '@/components/OverVue'
 import Pitch from '@/components/Pitch'
 // importAdditions
 
@@ -11,11 +11,11 @@ const menu = [{
     component: Entry,
     sourceUrl: 'components/Entry.vue'
   }, {
-    path: '/over-vue',
-    title: 'Overview',
-    component: OverVue,
-    sourceUrl: 'components/OverVue.vue'
-  }, {
+  //   path: '/over-vue',
+  //   title: 'Overview',
+  //   component: OverVue,
+  //   sourceUrl: 'components/OverVue.vue'
+  // }, {
     path: '/pitch-vue',
     title: 'Pitch',
     component: Pitch,

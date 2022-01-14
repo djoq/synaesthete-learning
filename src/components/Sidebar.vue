@@ -2,7 +2,6 @@
     <aside class="keen-docs-sidebar">
         <div class="keen-docs-sidebar__header">
             <span class="keen-docs-sidebar__header-brand">{{brand}}</span>
-
             <a
                 class="keen-docs-sidebar__header-version"
                 href="#/"
@@ -18,7 +17,7 @@
 
             <div class="keen-docs-sidebar__version-select">
                 <ui-select
-                    :options="['app1', 'app2', 'app3']"
+                    :options="['app1']"
                     @select="onVersionSelect"
                     v-model="application"
                 >Version</ui-select>
