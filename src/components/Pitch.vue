@@ -15,7 +15,7 @@
             :css="false">
           <canvas id="canv" width="400" height="256" />
         </transition>
-        <img src="/static/chakras.jpeg" width="400" />
+        <img :src="rootPath + 'static/chakras.jpeg'" width="400" />
 
         </div>
         <div class="item2">
@@ -49,7 +49,8 @@ export default {
       playing: false,
       cmajcolors: [ '#F32F01', '#E38F04', '#FEF200', '#AAEC09', '#25A9EF', '#B43EF7', '#FB1EE5' ],
       cmajor: ['C3', 'D3', 'E3', 'F3', 'G3', 'A3', 'B3'],
-      score: {right: 0, wrong: 0}
+      score: {right: 0, wrong: 0},
+      rootPath: process.env.NODE_ENV === 'production' ? '/synaesthete-learning/' : '/'
     }
   },
   methods: {
