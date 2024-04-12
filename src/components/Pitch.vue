@@ -13,7 +13,7 @@
             @enter="enterEl"
             @leave="leaveEl"
             :css="false">
-          <canvas id="canv" width="400" height="256" />
+          <canvas id="canv" width="400" height="259" />
         </transition>
         <img :src="rootPath + 'static/chakras.jpeg'" width="400" />
 
