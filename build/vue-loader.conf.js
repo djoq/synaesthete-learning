@@ -8,5 +8,7 @@ module.exports = {
       ? config.build.productionSourceMap
       : config.dev.cssSourceMap,
     extract: isProduction
-  })
+  }),
+  publicPath: process.env.NODE_ENV === 'production' ? '/synaesthete-learning/' : '/',
+
 }

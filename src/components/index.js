@@ -6,7 +6,7 @@ import SideBar from './Sidebar'
 import Pitch from './Pitch'
 // importAdditions
 
-let Exports = {
+var Exports = {
   overVue: OverVue,
   sideBar: SideBar,
   carousel: Carousel,

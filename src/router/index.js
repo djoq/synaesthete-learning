@@ -11,11 +11,6 @@ const menu = [{
     component: Entry,
     sourceUrl: 'components/Entry.vue'
   }, {
-  //   path: '/over-vue',
-  //   title: 'Overview',
-  //   component: OverVue,
-  //   sourceUrl: 'components/OverVue.vue'
-  // }, {
     path: '/pitch-vue',
     title: 'Pitch',
     component: Pitch,
@@ -25,14 +20,9 @@ const menu = [{
   ]
 }]
 
-
-
-
-
-
 // Generate a Vue Router compatible routes map from the menu
-const routes = menu.reduce((paths, section) => {
-  const sectionPaths = section.menu.map(menuItem => {
+const routes = menu.reduce(function (paths, section) {
+  var sectionPaths = section.menu.map(function (menuItem) {
     return {
       path: menuItem.path,
       component: menuItem.component,

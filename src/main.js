@@ -40,7 +40,7 @@ const router = new VueRouter({
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  mounted: () => {
+  mounted: function () {
     console.log('[MAIN::MOUNTED]', window.location)
     // zif (location.hash.includes('type')) store.commit('setName', location.hash.split('=')[1])
     // fetch()

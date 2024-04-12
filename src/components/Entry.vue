@@ -1,7 +1,7 @@
 <template>
   <div class="entry">
     <h3> {{ msg }} </h3>
-    <a href="/#/pitch-vue">Pitch Trainer</a>
+    <a href="/synaesthete-learning/#/pitch-vue">Pitch Trainer</a>
   </div>
 </template>
 

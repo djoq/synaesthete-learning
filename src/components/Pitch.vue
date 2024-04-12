@@ -3,30 +3,31 @@
     <h3 > {{ msg }} </h3>
     <p><b>Instructions: </b> Try to match the note to the color prior to the color appearing.</p>
     <h4> Score: {{ score.right }} / {{ score.right + score.wrong}}</h4>
-    <div style="text-align: center">
-      <ui-button @click="start" color="primary" style="display: inline-flex;"> Start </ui-button>
-      <hr/>
+    <div class="grid-container border">
+      <div class="item1">
+          <ui-button @click="start" color="primary" style="display: inline-flex;"> Start </ui-button>
+          <hr/>
 
-    <transition
-        name="fade"
-        @enter="enterEl"
-        @leave="leaveEl"
-        :css="false">
-      <canvas id="canv" width="400" height="256" />
-    </transition>
-    <img src="/static/chakras.jpeg" width="400" />
+        <transition
+            name="fade"
+            @enter="enterEl"
+            @leave="leaveEl"
+            :css="false">
+          <canvas id="canv" width="400" height="256" />
+        </transition>
+        <img src="/static/chakras.jpeg" width="400" />
 
-    <hr />
-    <div>
-      <ui-button color="red" @click="answer" id="C" > C </ui-button>
-      <ui-button color="orange" @click="answer" id="D" > D </ui-button>
-      <ui-button @click="answer" id="E" > E </ui-button>
-      <ui-button color="green" @click="answer" id="F" > F </ui-button>
-      <ui-button color="primary" @click="answer" id="G" > G </ui-button>
-      <ui-button color="accent" @click="answer" id="A" > A </ui-button>
-      <ui-button  @click="answer" id="B" > B </ui-button>
-    </div>
-    </div>
+        </div>
+        <div class="item2">
+          <ui-button color="red" @click="answer" id="C" > C </ui-button>
+          <ui-button color="orange" @click="answer" id="D" > D </ui-button>
+          <ui-button @click="answer" id="E" > E </ui-button>
+          <ui-button color="green" @click="answer" id="F" > F </ui-button>
+          <ui-button color="primary" @click="answer" id="G" > G </ui-button>
+          <ui-button color="accent" @click="answer" id="A" > A </ui-button>
+          <ui-button  @click="answer" id="B" > B </ui-button>
+        </div>
+      </div>
   </div>
 </template>
 <script>

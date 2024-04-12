@@ -21,11 +21,11 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.scss', '.json'],
     alias: {
-        sas: 'node_modules/keen-ui/src',
-        directives: 'node_modules/keen-ui/src/directives',
-        helpers: 'node_modules/keen-ui/src/helpers',
-        mixins: 'node_modules/keen-ui/src/mixins',
-        styles: 'node_modules/keen-ui/src/styles',
+      sas: 'node_modules/keen-ui/src',
+      directives: 'node_modules/keen-ui/src/directives',
+      helpers: 'node_modules/keen-ui/src/helpers',
+      mixins: 'node_modules/keen-ui/src/mixins',
+      styles: 'node_modules/keen-ui/src/styles',
 
       'vue$': 'vue/dist/vue.common.js',
       '@': resolve('src')
