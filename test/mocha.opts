@@ -1,6 +1,0 @@
- --compilers :./tools/babel-setup.js
---recursive --watch ./test/*.js
-
- -R spec
- -u bdd
- -w
