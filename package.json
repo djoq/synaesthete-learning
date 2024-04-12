@@ -2,7 +2,7 @@
   "name": "vuex-boilerplate",
   "version": "1.0.0",
   "description": "simple module",
-  "author": "Daniel O'Quinn <danieljoquinn@gmail.com>",
+  "author": "Daniel Oquinn <danieljoquinn@gmail.com>",
   "private": true,
   "homepage": "http://djoq.github.io/synaesthate-learning",
   "scripts": {
@@ -13,7 +13,7 @@
     "test": "mocha --compilers :./tools/babel-setup.js --recursive --watch ./test/*.js",
     "lint": "eslint --ext .js,.vue src test/unit/specs",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -b master -d build"
 
   },
   "dependencies": {
