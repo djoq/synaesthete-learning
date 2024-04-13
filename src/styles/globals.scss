@@ -78,3 +78,32 @@ a {
 	color: #333; /* Dark text color */
 	font-family: Arial, sans-serif; /* Font family */
 }
+
+.keyboard {
+	position: relative;
+	background-color: var(--dark-color);
+	display: flex;
+	overflow: scroll;
+	padding-top: 3px;
+}
+@media (min-width: 800px) {
+	.keyboard {
+		margin: 0 auto;
+		width: 80%;
+		padding: 5rem 0 1rem 0;
+		border-left: 2rem solid var(--dark-color);
+		border-right: 2rem solid var(--dark-color);
+		margin-bottom: 2rem;
+		border-radius: 5px;
+	}
+}
+canvas {
+	opacity : 0; transition: opacity 3s;
+	opacity : 1; transition: opacity 1s;
+}
+#E {
+	background: yellow;
+}
+#B {
+	background: #FF7AFE;
+}
