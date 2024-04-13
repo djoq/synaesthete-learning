@@ -2,7 +2,12 @@
 
 > Sensory learning methods and practices
 ## Demo
+
 https://djoq.github.io/synaesthete-learning/#/pitch-vue
+
+
+![alt text](https://github.com/djoq/synaesthete-learning/blob/master/static/screenshot.png?raw=true)
+
 
 ## Build Setup
 
