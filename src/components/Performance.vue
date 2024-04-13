@@ -1,6 +1,7 @@
 <template>
   <div class="analytics">
     <h3 > {{ msg }} </h3>
+<<<<<<< HEAD
 
     <h4 class="page__demo-title">Select a report to view. </h4>
 
@@ -29,7 +30,6 @@
 <script>
 
 import {Chart} from 'chart.js'
-
 
 
 // import store from '../store'

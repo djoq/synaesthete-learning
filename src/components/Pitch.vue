@@ -91,7 +91,10 @@ export default {
       if (!this.paused) {
         this.playing = true
         this.play()
+<<<<<<< HEAD
         this.score.startedAt = new Date().getTime()
+=======
+>>>>>>> 17ab48d... pause, record scores
       }
     },
     pause () {
@@ -104,8 +107,12 @@ export default {
       }
     },
     end () {
+<<<<<<< HEAD
       let timeOfGame = new Date().getTime()
       this.playing = false
+=======
+      let timeOfGame = new Date().getTime() / 1000
+>>>>>>> 17ab48d... pause, record scores
       window.localStorage.setItem(timeOfGame, JSON.stringify(this.score))
     },
     answer (e) {
