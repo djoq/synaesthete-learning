@@ -18,15 +18,17 @@
   "dependencies": {
     "axios": "^0.16.1",
     "chai-http": "^3.0.0",
+    "chart.js": " ^2.9.4",
     "fs": "0.0.1-security",
     "jsdom": "^11.0.0",
     "keen-ui": "^1.0.0",
     "sass-loader": "^6.0.5",
     "tone": "^14.8.32",
-    "vue": "^3.4.21",
-    "vue-material": "^0.8.1",
-    "vue-router": "^3.6.5",
-    "vuex": "^4.1.0"
+    "vue": "^2.2.6",
+    "vue-chartjs": "^2.8.7",
+    "vue-material": "^0.7.1",
+    "vue-router": "^2.3.1",
+    "vuex": "^2.3.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",

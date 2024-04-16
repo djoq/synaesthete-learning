@@ -10,6 +10,7 @@ import '../node_modules/keen-ui/dist/keen-ui.min.css'
 
 import imported from './components/'
 
+
 Vue.config.productionTip = false
 // Vue.component('PianoKeyboard', PianoKeyboard)
 Vue.component('About', imported.overVue)

@@ -2,16 +2,21 @@
   <div class="analytics">
     <h3 > {{ msg }} </h3>
     <div>
-      {{ data }}
       <li v-for="({ correct, wrong }, index) in data">
-        {{index}}{{ JSON.parse(data.getItem(index)) }}
+        {{displayDate(index)}}{{ JSON.parse(data.getItem(index)) }}
       </li>
-    </div>
+      </div>
+    <ui-button @click="drawChart" color="primary" style="display: inline-flex;"> Start </ui-button>
+
+    <canvas id="myChart"></canvas>
 
   </div>
 </template>
-
 <script>
+
+import {Chart} from 'chart.js'
+
+
 
 // import store from '../store'
 // import { actions } from '../actions'
@@ -22,9 +27,44 @@ export default {
   data () {
     return {
       msg: 'Analytics',
-      data: window.localStorage,
-
+      data: window.localStorage
     }
+  },
+  methods: {
+    displayDate (date) {
+      var t = new Date(1970, 0, 1) // Epoch
+      t.setSeconds(date)
+      return t
+    },
+    drawChart () {
+      console.log('drawChart')
+    }
+  },
+  components: {Chart},
+  mounted () {
+    const ctx = document.getElementById('myChart')
+    // eslint-disable-next-line no-new
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: Object.keys(this.data).map(this.displayDate),
+        datasets: [{
+          label: 'Percent Perfect Pitch',
+          data: Object.keys(this.data).map((result) => {
+            let score = JSON.parse(this.data[result])
+            return score.correct / (score.correct + score.wrong) * 100
+          }),
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    })
   }
 }
 </script>
