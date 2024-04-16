@@ -51,6 +51,7 @@ export default {
       t.setSeconds(date)
       return t
     },
+<<<<<<< HEAD
     displayData (index, data) {
       let output = JSON.parse(data.getItem(index))
       output.endedAt = index
@@ -62,6 +63,10 @@ export default {
     clearStorage () {
       window.localStorage.clear()
       this.data = []
+=======
+    drawChart () {
+      console.log('drawChart')
+>>>>>>> cf93d2f... analytics module
     }
   },
   components: {Chart},
