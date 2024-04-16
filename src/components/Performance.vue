@@ -24,7 +24,6 @@
       </div>
     <ui-button @click="clearStorage" color="primary" style="display: inline-flex;"> Clear Storage </ui-button>
 
-
   </div>
 </template>
 <script>
@@ -51,22 +50,18 @@ export default {
       t.setSeconds(date)
       return t
     },
-<<<<<<< HEAD
+
     displayData (index, data) {
       let output = JSON.parse(data.getItem(index))
       output.endedAt = index
       return output
     },
-    drawChart () {
-      console.log('drawChart')
-    },
     clearStorage () {
       window.localStorage.clear()
       this.data = []
-=======
+    },
     drawChart () {
       console.log('drawChart')
->>>>>>> cf93d2f... analytics module
     }
   },
   components: {Chart},
