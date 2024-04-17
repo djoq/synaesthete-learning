@@ -53,7 +53,7 @@ export default {
       pauseOrResume: 'Pause',
       cmajcolors: [ '#F32F01', '#E38F04', '#FEF200', '#AAEC09', '#25A9EF', '#B43EF7', '#FB1EE5' ],
       cmajor: ['C3', 'D3', 'E3', 'F3', 'G3', 'A3', 'B3'],
-      score: {correct: 0, wrong: 0},
+      score: {correct: 0, wrong: 0, answers: [], startedAt: 0},
       rootPath: process.env.NODE_ENV === 'production' ? '/synaesthete-learning/' : '/'
     }
   },
@@ -89,6 +89,7 @@ export default {
       if (!this.paused) {
         this.playing = true
         this.play()
+        this.score.startedAt = new Date().getTime()
       }
     },
     pause () {
@@ -111,6 +112,11 @@ export default {
       } else {
         this.score.wrong += 1
       }
+      this.score.answers.push({
+        selectedNote: e.target.parentElement.id,
+        correctNote: this.cmajor[this.note],
+        timeAnswered: new Date().getTime()
+      })
       setTimeout(this.start, 2000)
     },
     enterEl (el, done) {
