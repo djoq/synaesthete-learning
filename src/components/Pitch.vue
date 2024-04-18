@@ -53,7 +53,7 @@ export default {
       pauseOrResume: 'Pause',
       cmajcolors: [ '#F32F01', '#E38F04', '#FEF200', '#AAEC09', '#25A9EF', '#B43EF7', '#FB1EE5' ],
       cmajor: ['C3', 'D3', 'E3', 'F3', 'G3', 'A3', 'B3'],
-      score: {correct: 0, wrong: 0, answers: [], startedAt: 0},
+      score: { correct: 0, wrong: 0, startedAt: 0, endedAt: 0, answers: [] },
       rootPath: process.env.NODE_ENV === 'production' ? '/synaesthete-learning/' : '/'
     }
   },
@@ -65,7 +65,9 @@ export default {
      */
     keyPressed (tone) {
       this.$emit('keyPressed', tone)
-      this.synthesizer.playTone(tone)
+      if (this.playing) {
+        this.synthesizer.playTone(tone)
+      }
     },
     color () {
       document.getElementById('canv').style.opacity = 1
@@ -102,7 +104,8 @@ export default {
       }
     },
     end () {
-      let timeOfGame = new Date().getTime() / 1000
+      let timeOfGame = new Date().getTime()
+      this.playing = false
       window.localStorage.setItem(timeOfGame, JSON.stringify(this.score))
     },
     answer (e) {

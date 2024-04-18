@@ -1,14 +1,29 @@
 <template>
   <div class="analytics">
     <h3 > {{ msg }} </h3>
+
+    <h4 class="page__demo-title">Select a report to view. </h4>
+
+    <div class="page__demo-group">
+      <ui-button has-dropdown :size="size">
+        <div class="keen-docs__custom-popover-content" slot="dropdown">
+          <p><b>Default Report </b> here!</p>
+          <p>More reports available soon, here is the percentage correct!</p>
+        </div>
+
+        Click to select metric type
+      </ui-button>
+    </div>
+    <canvas id="myChart"></canvas>
+
     <div>
+      <h4> Saved Responses </h4>
       <li v-for="({ correct, wrong }, index) in data">
-        {{displayDate(index)}}{{ JSON.parse(data.getItem(index)) }}
+        {{ displayData(index, data) }}
       </li>
       </div>
-    <ui-button @click="drawChart" color="primary" style="display: inline-flex;"> Start </ui-button>
+    <ui-button @click="clearStorage" color="primary" style="display: inline-flex;"> Clear Storage </ui-button>
 
-    <canvas id="myChart"></canvas>
 
   </div>
 </template>
@@ -36,8 +51,17 @@ export default {
       t.setSeconds(date)
       return t
     },
+    displayData (index, data) {
+      let output = JSON.parse(data.getItem(index))
+      output.endedAt = index
+      return output
+    },
     drawChart () {
       console.log('drawChart')
+    },
+    clearStorage () {
+      window.localStorage.clear()
+      this.data = []
     }
   },
   components: {Chart},
