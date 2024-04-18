@@ -19,6 +19,7 @@ Vue.component('Test', imported.Test)
 Vue.component('Test', imported.Test)
 Vue.component('Pitch', imported.Pitch)
 Vue.component('Performance', imported.Performance)
+
 // componentAdditions
 
 Vue.component('side-bar', imported.sideBar)
