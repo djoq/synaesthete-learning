@@ -104,7 +104,6 @@ export default {
       }
     },
     end () {
-
       let timeOfGame = new Date().getTime()
       this.playing = false
       window.localStorage.setItem(timeOfGame, JSON.stringify(this.score))
