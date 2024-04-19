@@ -90,8 +90,8 @@ export default {
       document.getElementById('canv').style.opacity = 0
       if (!this.paused) {
         this.playing = true
-        this.play()
         this.score.startedAt = new Date().getTime()
+        this.play()
       }
     },
     pause () {
@@ -99,8 +99,9 @@ export default {
       if (this.paused) {
         this.pauseOrResume = 'Resume'
       } else {
-        this.start()
+        this.playing = true
         this.pauseOrResume = 'Pause'
+        this.play()
       }
     },
     end () {
@@ -120,7 +121,7 @@ export default {
         correctNote: this.cmajor[this.note],
         timeAnswered: new Date().getTime()
       })
-      setTimeout(this.start, 2000)
+      setTimeout(this.play, 2000)
     },
     enterEl (el, done) {
       // entrance animation
