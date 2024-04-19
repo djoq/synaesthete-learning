@@ -2,32 +2,34 @@
   <div class="pitch">
     <h3 > {{ msg }} </h3>
     <p><b>Instructions: </b> Try to match the note to the color prior to the color appearing.</p>
-    <h4> Score: {{ score.right }} / {{ score.right + score.wrong}}</h4>
+    <h4> Score: {{ score.correct }} / {{ score.correct + score.wrong }}</h4>
     <div class="grid-container border">
       <div class="item1">
-          <ui-button @click="start" color="primary" style="display: inline-flex;"> Start </ui-button>
-          <hr/>
+        <ui-button @click="start" color="primary" style="display: inline-flex;"> Start </ui-button>
+        <ui-button @click="pause" color="orange" style="display: inline-flex;"> {{pauseOrResume}} </ui-button>
+        <ui-button @click="end" color="red" style="display: inline-flex;"> End and Save </ui-button>
+        <hr/>
 
         <transition
             name="fade"
             @enter="enterEl"
             @leave="leaveEl"
             :css="false">
-          <canvas id="canv" width="400" height="256" />
+          <canvas id="canv" width="400" height="259" />
         </transition>
-        <img src="/static/chakras.jpeg" width="400" />
+        <img :src="rootPath + 'static/chakras.jpeg'" width="400" />
 
-        </div>
-        <div class="item2">
-          <ui-button color="red" @click="answer" id="C" > C </ui-button>
-          <ui-button color="orange" @click="answer" id="D" > D </ui-button>
-          <ui-button @click="answer" id="E" > E </ui-button>
-          <ui-button color="green" @click="answer" id="F" > F </ui-button>
-          <ui-button color="primary" @click="answer" id="G" > G </ui-button>
-          <ui-button color="accent" @click="answer" id="A" > A </ui-button>
-          <ui-button  @click="answer" id="B" > B </ui-button>
-        </div>
       </div>
+      <div class="item2">
+        <ui-button color="red" @click="answer" id="C" > C </ui-button>
+        <ui-button color="orange" @click="answer" id="D" > D </ui-button>
+        <ui-button @click="answer" id="E" > E </ui-button>
+        <ui-button color="green" @click="answer" id="F" > F </ui-button>
+        <ui-button color="primary" @click="answer" id="G" > G </ui-button>
+        <ui-button color="accent" @click="answer" id="A" > A </ui-button>
+        <ui-button  @click="answer" id="B" > B </ui-button>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -47,9 +49,12 @@ export default {
       timer: null,
       note: null,
       playing: false,
+      paused: false,
+      pauseOrResume: 'Pause',
       cmajcolors: [ '#F32F01', '#E38F04', '#FEF200', '#AAEC09', '#25A9EF', '#B43EF7', '#FB1EE5' ],
       cmajor: ['C3', 'D3', 'E3', 'F3', 'G3', 'A3', 'B3'],
-      score: {right: 0, wrong: 0}
+      score: { correct: 0, wrong: 0, startedAt: 0, endedAt: 0, answers: [] },
+      rootPath: process.env.NODE_ENV === 'production' ? '/synaesthete-learning/' : '/'
     }
   },
   methods: {
@@ -60,7 +65,9 @@ export default {
      */
     keyPressed (tone) {
       this.$emit('keyPressed', tone)
-      this.synthesizer.playTone(tone)
+      if (this.playing) {
+        this.synthesizer.playTone(tone)
+      }
     },
     color () {
       document.getElementById('canv').style.opacity = 1
@@ -72,7 +79,6 @@ export default {
       this.canvas.fillRect(0, 0, 400, 400)
       this.note = Math.floor(Math.random() * 7)
       this.synthesizer.playTone(this.cmajor[this.note])
-      // setTimeout(this.color, 4000)
       setTimeout(this.color, 2000)
     },
     play () {
@@ -82,20 +88,38 @@ export default {
     },
     start () {
       document.getElementById('canv').style.opacity = 0
-      this.playing = true
-      this.play()
+      if (!this.paused) {
+        this.playing = true
+        this.play()
+        this.score.startedAt = new Date().getTime()
+      }
+    },
+    pause () {
+      this.paused = !this.paused
+      if (this.paused) {
+        this.pauseOrResume = 'Resume'
+      } else {
+        this.start()
+        this.pauseOrResume = 'Pause'
+      }
+    },
+    end () {
+      let timeOfGame = new Date().getTime()
+      this.playing = false
+      window.localStorage.setItem(timeOfGame, JSON.stringify(this.score))
     },
     answer (e) {
-      let d = new Date()
       this.playing = false
-      var t = d.getTime() - this.timer
-      console.log('time to answer ->', t)
-      console.log('chose ->', e.target.parentElement.id)
       if (this.cmajor[this.note].includes(e.target.parentElement.id)) {
-        this.score.right += 1
+        this.score.correct += 1
       } else {
         this.score.wrong += 1
       }
+      this.score.answers.push({
+        selectedNote: e.target.parentElement.id,
+        correctNote: this.cmajor[this.note],
+        timeAnswered: new Date().getTime()
+      })
       setTimeout(this.start, 2000)
     },
     enterEl (el, done) {
@@ -108,7 +132,7 @@ export default {
     },
   },
   mounted () {
-   //  this.$refs.keyboard.scrollLeft = 300
+    //  this.$refs.keyboard.scrollLeft = 300
     var c = document.getElementById('canv')
     var ctx = c.getContext('2d')
     this.canvas = ctx
@@ -122,34 +146,3 @@ export default {
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
-.keyboard {
-  position: relative;
-  background-color: var(--dark-color);
-  display: flex;
-  overflow: scroll;
-  padding-top: 3px;
-}
-@media (min-width: 800px) {
-  .keyboard {
-    margin: 0 auto;
-    width: 80%;
-    padding: 5rem 0 1rem 0;
-    border-left: 2rem solid var(--dark-color);
-    border-right: 2rem solid var(--dark-color);
-    margin-bottom: 2rem;
-    border-radius: 5px;
-  }
-}
-canvas {
-  opacity : 0; transition: opacity 3s;
-  opacity : 1; transition: opacity 1s;
-}
-#E {
-  background: yellow;
-}
-#B {
-  background: #FF7AFE;
-}
-
-</style>

@@ -1,6 +1,7 @@
 import Entry from '@/components/Entry'
 // import OverVue from '@/components/OverVue'
 import Pitch from '@/components/Pitch'
+import Performance from '@/components/Performance'
 // importAdditions
 
 const menu = [{
@@ -15,6 +16,11 @@ const menu = [{
     title: 'Pitch',
     component: Pitch,
     sourceUrl: 'components/PitchVue.vue'
+  }, {
+    path: '/Performance',
+    title: 'Performance',
+    component: Performance,
+    sourceUrl: 'components/Performance'
   }
 // routeAdditions
   ]
