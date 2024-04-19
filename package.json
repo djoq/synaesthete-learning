@@ -2,15 +2,18 @@
   "name": "vuex-boilerplate",
   "version": "1.0.0",
   "description": "simple module",
-  "author": "Daniel O'Quinn <danieljoquinn@gmail.com>",
+  "author": "Daniel Oquinn <danieljoquinn@gmail.com>",
   "private": true,
+  "homepage": "http://djoq.github.io/synaesthate-learning",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
     "build": "node build/build.js && ./install_for_deploy.sh",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "mocha --compilers :./tools/babel-setup.js --recursive --watch ./test/*.js",
-    "lint": "eslint --ext .js,.vue src test/unit/specs"
+    "lint": "eslint --ext .js,.vue src test/unit/specs",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "axios": "^0.16.1",

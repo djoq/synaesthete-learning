@@ -20,11 +20,12 @@
       <li v-for="({ correct, wrong }, index) in data">
         {{ displayData(index, data) }}
       </li>
-    </div>
-    <ui-button @click="clearStorage" color="primary" style="display: inline-flex;"> Clear Storage </ui-button>
 
+      <ui-button @click="clearStorage" color="primary" style="display: inline-flex;"> Clear Storage </ui-button>
+
+    </div>
   </div>
-</template>
+  </template>
 <script>
 
 import {Chart} from 'chart.js'

@@ -10,6 +10,7 @@ import '../node_modules/keen-ui/dist/keen-ui.min.css'
 
 import imported from './components/'
 
+
 Vue.config.productionTip = false
 // Vue.component('PianoKeyboard', PianoKeyboard)
 Vue.component('About', imported.overVue)
@@ -17,6 +18,8 @@ Vue.component('Carousel', imported.carousel)
 Vue.component('Test', imported.Test)
 Vue.component('Test', imported.Test)
 Vue.component('Pitch', imported.Pitch)
+Vue.component('Performance', imported.Performance)
+
 // componentAdditions
 
 Vue.component('side-bar', imported.sideBar)

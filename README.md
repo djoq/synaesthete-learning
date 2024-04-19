@@ -1,6 +1,17 @@
 # Synaesthate Learning Platform
 
 > Sensory learning methods and practices
+## Demo
+
+https://djoq.github.io/synaesthete-learning/#/pitch-vue
+
+
+![alt text](https://github.com/djoq/synaesthete-learning/blob/master/static/screenshot.png?raw=true)
+
+## Reporting/Analytics
+
+https://github.com/ShradJoshi/dataanalytics_project
+
 
 ## Build Setup
 
@@ -23,23 +34,3 @@ npm run unit
 # run all tests
 npm test
 ```
-
-## CLI and scaffolding components
-
-`node cli.js --help`
-
-````
-  Usage: cli [options]
-
-
-  Options:
-
-    -V, --version           output the version number
-    -c, --component [name]  Add new component with [name] (default: Sample)
-    -r, --route             Generate a route for the new component
-    -d, --destroy           Remove a component
-    -h, --help              output usage information
-````
-
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

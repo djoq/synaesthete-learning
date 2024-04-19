@@ -46,7 +46,7 @@ exports.deportReplacers = (name) => {
 }
 
 exports.createTemplate = (name) => {
-    let input = fs.readFileSync('./src/templates/Sample.vue').toString()
+    let input = fs.readFileSync('./src/templates/Performance.vue').toString()
     let output = input.split("REPLACE").join(name.toLowerCase())
 
     fs.writeFile('./src/components/'+capitalize(name)+'.vue', output, (err) => {

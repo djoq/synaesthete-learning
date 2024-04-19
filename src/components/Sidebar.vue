@@ -17,7 +17,7 @@
 
             <div class="keen-docs-sidebar__version-select">
                 <ui-select
-                    :options="['app1']"
+                    :options="['Music']"
                     @select="onVersionSelect"
                     v-model="application"
                 >Version</ui-select>
@@ -77,14 +77,14 @@ export default {
   name: 'sidebar',
   data () {
     return {
-      application: 'app1',
+      application: 'Music',
       brand: process.env.META.title,
       menu
     }
   },
   methods: {
     onVersionSelect (version) {
-      if (version === 'app1') {
+      if (version === 'Music') {
       }
 
 //      let root = ''

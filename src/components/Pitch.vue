@@ -104,6 +104,7 @@ export default {
       }
     },
     end () {
+
       let timeOfGame = new Date().getTime()
       this.playing = false
       window.localStorage.setItem(timeOfGame, JSON.stringify(this.score))
@@ -145,4 +146,3 @@ export default {
   }
 }
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
